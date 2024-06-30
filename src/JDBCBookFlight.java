@@ -188,8 +188,12 @@ public class JDBCBookFlight extends JDBCMain{
 
             resultSet = statement.executeQuery("SELECT * FROM flights " +
                     "where Code like '" + Code + "' " +
-                    "and Date >= '"+year+"-"+month+"-"+day+"' " +
-                    "and Time > '"+hour+":"+minute+"'");
+                    "and Date >= '"+year+"-"+month+"-"+day+"' or ( Date >= '"+year+"-"+month+"-"+day+"' " +
+                    "and Time > '"+hour+":"+minute+"')");
+            System.out.println("SELECT * FROM flights " +
+                    "where Code like '" + Code + "' " +
+                    "and Date >= '"+year+"-"+month+"-"+day+"' or ( Date >= '"+year+"-"+month+"-"+day+"' " +
+                    "and Time > '"+hour+":"+minute+"')");
             if (resultSet.isBeforeFirst()){
                 happened = false;
             }
